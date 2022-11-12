@@ -1,33 +1,31 @@
 import TextField from "@material-ui/core/TextField";
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import axios from 'axios'
+import axios from "axios";
 import "./App.css";
 
 function App() {
-//   const getMsgs = async () => {
-//     return await axios
-//       .get("http://localhost:4000/msg")
-//       .then(function (response) {
-//         // handle success
-//         console.log(response.data.msgs);
-// 		setChat(response.data.msgs)
-//       }).data.msgs
-//   };
+  //   const getMsgs = async () => {
+  //     return await axios
+  //       .get("http://localhost:4000/msg")
+  //       .then(function (response) {
+  //         // handle success
+  //         console.log(response.data.msgs);
+  // 		setChat(response.data.msgs)
+  //       }).data.msgs
+  //   };
 
   const [state, setState] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
 
   const socketRef = useRef();
-    useEffect( async () => {
-		await axios
-      .get("http://localhost:4000/msg")
-      .then(function (response) {
-        // handle success
-        console.log(response.data.msgs);
-		setChat(response.data.msgs)
-      })
-    }, []);
+  useEffect(async () => {
+    await axios.get("http://localhost:4000/msg").then(function (response) {
+      // handle success
+      console.log(response.data.msgs);
+      setChat(response.data.msgs);
+    });
+  }, []);
   useEffect(() => {
     socketRef.current = io.connect("http://localhost:4000");
     // var data = getMsgs()

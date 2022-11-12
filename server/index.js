@@ -29,9 +29,11 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(4000, function () {
-  console.log("listening on port 4000");
-});
-
 app.use(cors());
 app.use('/msg', msgRouter);
+
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
+  console.log(`Server is live on ${PORT}`)
+});
+
