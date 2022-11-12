@@ -19,14 +19,14 @@ function App() {
 
   const socketRef = useRef();
   useEffect(async () => {
-    await axios.get("http://localhost:4000/msg").then(function (response) {
+    await axios.get("https://mauduckg.herokuapp.com/msg").then(function (response) {
       // handle success
       console.log(response.data.msgs);
       setChat(response.data.msgs);
     });
   }, []);
   useEffect(() => {
-    socketRef.current = io.connect("http://localhost:4000");
+    socketRef.current = io.connect("https://mauduckg.herokuapp.com/");
     // var data = getMsgs()
     socketRef.current.on("message", ({ name, message }) => {
       setChat([...chat, { user: name, msg: message }]);
