@@ -33,7 +33,7 @@ app.use(cors());
 app.use('/msg', msgRouter);
 
 const PORT = process.env.PORT || 4000
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Server is live on ${PORT}`)
 });
 
