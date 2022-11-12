@@ -1,4 +1,3 @@
-import TextField from "@material-ui/core/TextField";
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import axios from "axios";
@@ -61,7 +60,7 @@ function App() {
       <form onSubmit={onMessageSubmit}>
         <h1>Messenger</h1>
         <div className="name-field">
-          <TextField
+          <input
             name="name"
             onChange={(e) => onTextChange(e)}
             value={state.name}
@@ -69,7 +68,7 @@ function App() {
           />
         </div>
         <div>
-          <TextField
+          <input
             name="message"
             onChange={(e) => onTextChange(e)}
             value={state.message}
